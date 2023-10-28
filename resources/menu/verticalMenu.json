@@ -1,0 +1,16 @@
+{
+    "menu": [
+        {
+            "url": "/",
+            "name": "Dashboard",
+            "icon": "menu-icon tf-icons ti ti-dashboard",
+            "slug": "backend.dashboard"
+        },
+        {
+            "url": "/volunteer",
+            "name": "Relawan",
+            "icon": "menu-icon tf-icons ti ti-user",
+            "slug": "backend.volunteer"
+        }
+    ]
+}
