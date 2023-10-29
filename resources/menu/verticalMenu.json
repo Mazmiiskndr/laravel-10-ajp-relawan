@@ -1,7 +1,7 @@
 {
     "menu": [
         {
-            "url": "/",
+            "url": "/dashboard",
             "name": "Dashboard",
             "icon": "menu-icon tf-icons ti ti-dashboard",
             "slug": "backend.dashboard"

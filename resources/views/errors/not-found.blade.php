@@ -12,7 +12,8 @@
 
     <!-- Favicon -->
     {{-- TODO: ICON --}}
-    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo/icon_megalos-blue.png') }}" /> --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon-ajp.png') }}" />
+
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" class="template-customizer-theme-css" />
