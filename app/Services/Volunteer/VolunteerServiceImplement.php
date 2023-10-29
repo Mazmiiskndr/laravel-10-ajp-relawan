@@ -23,15 +23,24 @@ class VolunteerServiceImplement extends Service implements VolunteerService
     /**
      * Get a collection of volunteers from the database.
      *
-     * @param int|null $limit      The maximum number of records to return.
-     * @param bool     $useGet     Whether to execute the query immediately using the 'get' method.
-     * @param array    $relations  An array of relationships to eager-load.
+     * @param array|string $columns   The columns to select from the database table.
+     * @param int|null     $limit     The maximum number of records to return.
+     * @param bool         $useGet    Whether to execute the query immediately using the 'get' method.
+     * @param array        $relations An array of relationships to eager-load.
      *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Builder
      */
-    public function getVolunteers($limit = null, $useGet = true, $relations = [])
+    public function getVolunteers($columns = ['*'], $limit = null, $useGet = true, $relations = [])
     {
-        return $this->handleRepositoryCall('getVolunteers', [$limit, $useGet, $relations]);
+        return $this->handleRepositoryCall('getVolunteers', [$columns, $limit, $useGet, $relations]);
+    }
+
+    /**
+     * Get the data formatted for DataTables.
+     */
+    public function getDatatables()
+    {
+        return $this->handleRepositoryCall('getDatatables');
     }
 
     /**

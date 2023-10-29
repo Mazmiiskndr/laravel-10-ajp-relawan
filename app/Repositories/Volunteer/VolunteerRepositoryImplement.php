@@ -2,13 +2,15 @@
 
 namespace App\Repositories\Volunteer;
 
+use App\Traits\{ActionsButtonTrait, DataTablesTrait};
 use LaravelEasyRepository\Implementations\Eloquent;
 use App\Models\Volunteer;
 use Illuminate\Support\Facades\Log;
 
 class VolunteerRepositoryImplement extends Eloquent implements VolunteerRepository
 {
-
+    use DataTablesTrait;
+    use ActionsButtonTrait;
     /**
      * Model class to be used in this repository for the common methods inside Eloquent
      * Don't remove or change $this->model variable name
@@ -24,15 +26,16 @@ class VolunteerRepositoryImplement extends Eloquent implements VolunteerReposito
     /**
      * Get a collection of volunteers from the database.
      *
-     * @param int|null $limit      The maximum number of records to return.
-     * @param bool     $useGet     Whether to execute the query immediately using the 'get' method.
-     * @param array    $relations  An array of relationships to eager-load.
+     * @param array|string $columns   The columns to select from the database table.
+     * @param int|null     $limit     The maximum number of records to return.
+     * @param bool         $useGet    Whether to execute the query immediately using the 'get' method.
+     * @param array        $relations An array of relationships to eager-load.
      *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Builder
      */
-    public function getVolunteers($limit = null, $useGet = true, $relations = [])
+    public function getVolunteers($columns = ['*'], $limit = null, $useGet = true, $relations = [])
     {
-        $query = $this->volunteerModel->with($relations)->latest();
+        $query = $this->volunteerModel->select($columns)->with($relations)->latest();
 
         return $useGet ?
             $query->when($limit, function ($q, $limit) {
@@ -41,7 +44,29 @@ class VolunteerRepositoryImplement extends Eloquent implements VolunteerReposito
             $query;
     }
 
+    /**
+     * Get the data formatted for DataTables.
+     */
+    public function getDatatables()
+    {
+        // Retrieve the volunteers data from the volunteer model
+        $data = $this->getVolunteers(
+            ['id', 'address_id', 'tps_coordinates_id', 'nik', 'nkk', 'name', 'phone', 'coordinator'],
+            null,
+            false,
+            ['address', 'tpsCoordinate']
+        );
 
+        // Return format the data for DataTables
+        return $this->formatDataTablesResponse(
+            $data,
+            [
+                'action' => function ($data) {
+                    return $this->getActionButtons($data->id, 'showVolunteer', 'confirmDeleteVolunteer');
+                }
+            ]
+        );
+    }
 
     /**
      * Get a volunteer by their ID.
