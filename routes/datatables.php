@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Grouping datatable routes
-Route::middleware('auth')->prefix('livewire/backend/')->group(function () {
+Route::prefix('livewire/backend/')->group(function () {
     // Route for list what i dos page
     Route::get('volunteer/getDatatable', [VolunteerDatatables::class, 'getDatatable'])
         ->name('volunteer.getDatatable');

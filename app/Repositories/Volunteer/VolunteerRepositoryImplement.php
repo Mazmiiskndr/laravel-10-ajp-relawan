@@ -51,7 +51,7 @@ class VolunteerRepositoryImplement extends Eloquent implements VolunteerReposito
     {
         // Retrieve the volunteers data from the volunteer model
         $data = $this->getVolunteers(
-            ['id', 'address_id', 'tps_coordinates_id', 'nik', 'nkk', 'name', 'phone', 'coordinator'],
+            ['id', 'address_id', 'tps_coordinate_id', 'nik', 'nkk', 'name', 'phone', 'coordinator'],
             null,
             false,
             ['address', 'tpsCoordinate']
@@ -61,9 +61,15 @@ class VolunteerRepositoryImplement extends Eloquent implements VolunteerReposito
         return $this->formatDataTablesResponse(
             $data,
             [
-                'action' => function ($data) {
-                    return $this->getActionButtons($data->id, 'showVolunteer', 'confirmDeleteVolunteer');
+                'district' => function ($data) {
+                    return $data->address->district;
+                },
+                'village' => function ($data) {
+                    return $data->address->village;
                 }
+                // 'action' => function ($data) {
+                //     return $this->getActionButtons($data->id, 'showVolunteer', 'confirmDeleteVolunteer');
+                // }
             ]
         );
     }
