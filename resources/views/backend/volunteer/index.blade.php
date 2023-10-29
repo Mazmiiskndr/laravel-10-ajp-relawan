@@ -11,11 +11,8 @@
 <!-- DataTable with Buttons -->
 <div class="card">
     <div class="card-header">
-        <div class="row">
-            <div class="col-12">
-                <h4 class="card-title">Table Relawan</h4>
-            </div>
-        </div>
+        {{-- TODO: --}}
+        @livewire('backend.volunteer.form-search')
     </div>
 
     {{-- Start List DataTable --}}
