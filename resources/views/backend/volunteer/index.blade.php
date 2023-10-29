@@ -11,8 +11,8 @@
 <!-- DataTable with Buttons -->
 <div class="card">
     <div class="card-header">
-        <div class="d-flex justify-content-between flex-column flex-sm-row">
-            <div class="text-center text-sm-start">
+        <div class="row">
+            <div class="col-12">
                 <h4 class="card-title">Table Relawan</h4>
             </div>
         </div>
