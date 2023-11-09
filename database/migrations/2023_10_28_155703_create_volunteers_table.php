@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('tps_coordinate_id')->references('id')->on('tps_coordinates')->onDelete('cascade');
             $table->char('nik', 16)->unique();
             $table->string('nkk');
+            $table->string('volunteer_name');
             $table->string('name');
             $table->string('gender');
             $table->string('phone');

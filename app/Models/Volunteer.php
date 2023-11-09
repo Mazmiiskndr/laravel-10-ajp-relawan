@@ -26,6 +26,7 @@ class Volunteer extends Model
         'tps_coordinate_id',
         'nik',
         'nkk',
+        'volunteer_name',
         'name',
         'gender',
         'phone',

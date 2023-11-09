@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pages\HomePage;
 use App\Http\Controllers\pages\Page2;
@@ -23,10 +24,11 @@ use App\Http\Controllers\Backend\VolunteerController;
 // Main Page Route
 
 // TODO: ADD MIDDLEWARE
+Route::get('/', [LoginController::class, 'index'])->name('login');
 // middleware('auth')->
 Route::name('backend.')->group(function () {
     // Route for Dashboard page
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/volunteer', [VolunteerController::class, 'index'])->name('volunteer');
 });
 // Route::get('/', [HomePage::class, 'index'])->name('pages-home');

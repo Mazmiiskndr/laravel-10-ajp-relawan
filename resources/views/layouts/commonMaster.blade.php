@@ -12,9 +12,8 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>@yield('title') |
-        {{ config('variables.templateName') ? config('variables.templateName') : 'TemplateName' }} -
-        {{ config('variables.templateSuffix') ? config('variables.templateSuffix') : 'TemplateSuffix' }}
+    <title>@yield('title') -
+        {{ config('variables.templateName') ? config('variables.templateName') : 'TemplateName' }}
     </title>
     <meta name="description" content="{{ config('variables.templateDescription') ? config('variables.templateDescription') : '' }}" />
     <meta name="keywords" content="{{ config('variables.templateKeyword') ? config('variables.templateKeyword') : '' }}">
@@ -23,7 +22,7 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
     <!-- Canonical SEO -->
     <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon-ajp.png') }}" />
 
     @livewireStyles
 
@@ -35,6 +34,7 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- $isFront is used to append the front layout scriptsIncludes only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/scriptsIncludes' . $isFront)
+    @stack('styles')
 </head>
 
 <body>
@@ -49,6 +49,8 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
     <!-- Include Scripts -->
     <!-- $isFront is used to append the front layout scripts only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/scripts' . $isFront)
+
+    @stack('scripts')
 
 </body>
 

@@ -23,6 +23,7 @@ class VolunteerFactory extends Factory
             'tps_coordinate_id' => TpsCoordinate::inRandomOrder()->first()->id,
             'nik' => $this->faker->randomNumber(8) . $this->faker->randomNumber(8),
             'nkk' => str_pad($this->faker->randomNumber(8), 16, '0', STR_PAD_LEFT),
+            'volunteer_name' => $this->faker->name,
             'name' => $this->faker->name,
             'gender' => $this->faker->randomElement(['male', 'female']),
             'phone' => $this->faker->phoneNumber,

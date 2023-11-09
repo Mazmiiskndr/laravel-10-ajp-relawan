@@ -1,9 +1,9 @@
 <?php
 // Variables
 return [
-    "creatorName" => "AJP Relawan",
+    "creatorName" => "AJP",
     "creatorUrl" => "https://mazmiiskndr.me",
-    "templateName" => "AJP Relawan",
+    "templateName" => "AJP",
     "templateSuffix" => "Moch Azmi Iskandar",
     "templateVersion" => "1.0.0",
     "templateFree" => false,
