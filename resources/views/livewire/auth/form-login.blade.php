@@ -1,4 +1,13 @@
 <form class="mb-3" wire:submit.prevent="loginAction" method="POST">
+    @if (session()->has('error'))
+    <div class="mb-3">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    @endif
+
     <div class="mb-3">
         <x-input-field type="text" id="username" label="Username" model="form.username" placeholder="Enter a Username.." required autofocus />
     </div>

@@ -26,17 +26,10 @@ use App\Http\Controllers\Backend\VolunteerController;
 // TODO: ADD MIDDLEWARE
 Route::get('/', [LoginController::class, 'index'])->name('login');
 // middleware('auth')->
-Route::name('backend.')->group(function () {
+Route::middleware('auth')->name('backend.')->group(function () {
     // Route for Dashboard page
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/volunteer', [VolunteerController::class, 'index'])->name('volunteer');
 });
-// Route::get('/', [HomePage::class, 'index'])->name('pages-home');
-// Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
 
-// // pages
-// Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
-
-// // authentication
-// Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
-// Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

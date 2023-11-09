@@ -20,12 +20,16 @@ class DatabaseSeeder extends Seeder
 
         $this->call(VolunteerSeeder::class);
 
-
-
         \App\Models\User::factory()->create([
             'name' => 'Administrator',
-            'username' => 'admi',
+            'username' => 'admin',
             'password' => Hash::make('admin'),
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Dika',
+            'username' => '082163422821',
+            'password' => Hash::make('ajpsuksesrelawan'),
         ]);
     }
 }

@@ -40,15 +40,8 @@ $customizerHidden = 'customizer-hide';
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-1 pt-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
-                    @if (session()->has('error'))
-                    <div>
-                        <div class="alert alert-danger alert-dismissible" role="alert">
-                            {{ session('error') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </div>
-                    @endif
+                    <h4 class="mb-3 pt-2 text-center mt-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
+
 
                     {{-- START FORM LOGIN --}}
                     @livewire('auth.form-login')
