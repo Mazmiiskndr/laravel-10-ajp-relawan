@@ -12,4 +12,10 @@ class LoginController extends Controller
         $pageConfigs = ['myLayout' => 'blank'];
         return view('auth.login', ['pageConfigs' => $pageConfigs]);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('login');
+    }
 }
